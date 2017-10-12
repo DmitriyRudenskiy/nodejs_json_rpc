@@ -21,6 +21,7 @@ app.use(function (err, req, res, next) {
 });
 
 app.use(function (req, res, next) {
+    // Configure CORS (Cross-Origin Resource Sharing)
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization');
@@ -32,9 +33,9 @@ if ('development' == env) {
     // app.use(express.errorHandler());
 }
 
-app.post('*', requireAuthentication);
-app.post('*', loadUser);
-app.use("/api", require('./router'));
+// app.post('*', requireAuthentication);
+// app.post('*', loadUser);
+app.use("/api", require('./router')(express.Router()));
 
 // Not find
 app.use("*", function (req, res) {
