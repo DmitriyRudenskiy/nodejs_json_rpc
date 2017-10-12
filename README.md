@@ -10,3 +10,9 @@ Run the tests:
 ==============
 
 npm test
+
+export NODE_ENV=stage
+
+
+
+NODE_ENV= node app.js --env=(development|production)
